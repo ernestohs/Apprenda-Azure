@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<addonManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="http://schemas.apprenda.com/AddonManifest"
+               xsi:schemaLocation="http://schemas.apprenda.com/AddonManifest http://apprenda.com/schemas/platform/5.0/AddonManifest.xsd"
+               name="Azure Storage"
+               description="Azure provides scalable, durable cloud storage, backup, and recovery solutions for any data, big and small. It works with the infrastructure you already have to cost-effectively enhance your business continuity strategy as well as provide storage required by your cloud applications including unstructured text or binary data such as video, audio and images."
+               deploymentNotes="Configured to work on .NET 4.5 runtime, and Apprenda 5.0.x"
+               developerHelp="contact cdutra@apprenda.com for assistance."
+               vendor="Apprenda"
+               author="Chris Dutra"
+               version="0.0.5"
+               provisioningUsername=""
+               provisioningPassword=""
+               provisioningLocation="">
+  <properties>
+    <property key="RequireDevCredentials" displayName="Require Developer Credentials" description="If set to true, each developer will need to provide their own Amazon credentials, otherwise the default creds will be used to provision RDS instances." value="false"  />
+    <property key="StorageAccountName" displayName="Azure Storage Account Name" description="" value="dutron" />
+    <property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value="1726f9f2-c979-45c7-ac70-21d60e51a488" />
+    <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="" value="lessthan255inlength"/>
+    <property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
+    <property key="Description" displayName="" description="" value="Creating storage for Dutron application."/>
+    <property key="GeoReplicationEnabled" displayName="Geo Replication Option" description="Set to false if you do not want your storage replicated globally. Default is true." value="false"/>
+    <property key="Location" displayName="" description="" value="East US"/>
+  </properties>
+</addonManifest>
