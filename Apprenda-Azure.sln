@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Storage", "Apprenda-Azure-Addon\Azure Storage\Azure Storage.csproj", "{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Service Bus", "Apprenda-Azure-Addon\Azure Service Bus\Azure Service Bus.csproj", "{CC7CAD2A-C844-45C0-87BC-8E147EC597B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Utilities", "Apprenda-Azure-Addon\Azure Utilities\Azure Utilities.csproj", "{DD49E301-3BE2-4FA6-A95C-D19111C85229}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedLibraries", "SharedLibraries", "{298EE348-54BC-4C9C-9DCA-BEF4E13FAE59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC7CAD2A-C844-45C0-87BC-8E147EC597B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC7CAD2A-C844-45C0-87BC-8E147EC597B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC7CAD2A-C844-45C0-87BC-8E147EC597B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC7CAD2A-C844-45C0-87BC-8E147EC597B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+	EndGlobalSection
+EndGlobal
