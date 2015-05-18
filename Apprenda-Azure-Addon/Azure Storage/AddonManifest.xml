@@ -15,9 +15,17 @@
                provisioningLocation=""
                manifestVersion="2">
   <properties>
+<<<<<<< HEAD
+    <property key="StorageAccountName" displayName="Azure Storage Account Name" description="" value="" />
     <property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value="" />
     <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="" value=""/>
     <property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
+=======
+	<property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value=""/>
+    <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="Must be less than 255 characters in length" value=""/>
+    <property key="RequireDevCredentials" displayName="Require Developer Credentials" description="If set to true, each developer will need to provide their own Azure credentials, otherwise the default creds will be used to provision Azure Storage instances." value="false"  />
+	<property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
+>>>>>>> origin/master
     <property key="Description" displayName="" description="" value="Creating storage for Dutron application."/>
     <property key="GeoReplicationEnabled" displayName="Geo Replication Option" description="Set to false if you do not want your storage replicated globally. Default is true." value="true"/>
     <property key="Location" displayName="" description="" value="East US"/>
