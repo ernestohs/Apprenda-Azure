@@ -150,3 +150,6 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# we don't need this.
+Apprenda-Azure-Build/
