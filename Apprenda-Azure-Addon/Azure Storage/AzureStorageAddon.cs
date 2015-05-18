@@ -65,6 +65,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             }
             catch (Exception e)
             {
+                provisionResult.IsSuccess = false;
                 provisionResult.EndUserMessage = e.Message + "\n We're in an error\n";
             }
 
@@ -159,11 +160,14 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 }
                 catch (Exception e)
                 {
+                    // adding a forced failure here.
+                    testResult.IsSuccess = false;
                     testResult.EndUserMessage = testProgress + "\nEXCEPTION: " + e.Message;
                 }
             }
             else
             {
+                testResult.IsSuccess = false;
                 testResult.EndUserMessage = "Missing required manifest properties (requireDevCredentials)";
             }
 
