@@ -5754,6 +5754,124 @@
             request ID.
             </returns>
         </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations">
+            <summary>
+            The Network Management API includes operations for managing the IP
+            Forwarding for your roles and network interfaces in your subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.BeginSettingIPForwardingOnNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Set IP Forwarding on network interface
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.BeginSettingIPForwardingOnRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Set IP Forwarding on role operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.GetForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the IP Forwarding applied to a network interface.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.GetForRoleAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the IP Forwarding applied to a role.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.SetOnNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Set IP Forwarding on network interface
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.SetOnRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Set IP Forwarding on role operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.INetworkManagementClient">
             <summary>
             The Service Management API includes operations for managing the virtual
@@ -5841,6 +5959,13 @@
             for more information)
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.INetworkManagementClient.IPForwarding">
+            <summary>
+            The Network Management API includes operations for managing the IP
+            Forwarding for your roles and network interfaces in your
+            subscription.
+            </summary>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.INetworkManagementClient.Networks">
             <summary>
             The Network Management API includes operations for managing the
@@ -5871,6 +5996,12 @@
             <summary>
             The Network Management API includes operations for managing the
             static IPs for your subscription.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.INetworkManagementClient.VirtualIPs">
+            <summary>
+            The Network Management API includes operations for managing the
+            Virtual IPs for your deployment.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.INetworkOperations">
@@ -5958,7 +6089,53 @@
             Security Groups for your subscription.
             </summary>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.AddToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters,System.Threading.CancellationToken)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.AddToNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Add Network Security Group to a network
+            interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.AddToRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Add Network Security Group to Role
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.AddToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -5981,7 +6158,53 @@
             information regarding the failure.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginAddingToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters,System.Threading.CancellationToken)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginAddingToNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Add Network Security Group to a network
+            interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginAddingToRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Add Network Security Group to Role
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginAddingToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -6061,6 +6284,44 @@
             <param name='ruleName'>
             The name of the rule to delete.
             </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginRemovingFromNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.BeginRemovingFromRoleAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
             <param name='cancellationToken'>
             Cancellation token.
             </param>
@@ -6209,6 +6470,31 @@
             A Network Security Group associated with your subscription.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.GetForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the Network Security Group applied to a specific network
+            interface.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.GetForRoleAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the Network Security Group applied to a specific role.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.GetForSubnetAsync(System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the Network Security Group applied to a specific subnet.
@@ -6217,7 +6503,8 @@
             Cancellation token.
             </param>
             <returns>
-            The Network Security Group associated with a subnet.
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.ListAsync(System.Threading.CancellationToken)">
@@ -6229,6 +6516,44 @@
             </param>
             <returns>
             The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.RemoveFromNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.RemoveFromRoleAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.RemoveFromSubnetAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
@@ -6259,6 +6584,577 @@
             </param>
             <param name='cancellationToken'>
             Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations">
+            <summary>
+            The Network Management API includes operations for managing the IP
+            Forwarding for your roles and network interfaces in your subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.#ctor(Microsoft.WindowsAzure.Management.Network.NetworkManagementClient)">
+            <summary>
+            Initializes a new instance of the IPForwardingOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.BeginSettingIPForwardingOnNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.BeginSettingIPForwardingOnRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.GetForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the IP Forwarding applied to a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.GetForRoleAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the IP Forwarding applied to a role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.SetOnNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.SetOnRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters,System.Threading.CancellationToken)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.IPForwardingOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.Network.NetworkManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions">
+            <summary>
+            The Service Management API includes operations for managing the virtual
+            networks for your subscription.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/jj157182.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.BeginSettingIPForwardingOnNetworkInterface(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.BeginSettingIPForwardingOnNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.BeginSettingIPForwardingOnRole(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.BeginSettingIPForwardingOnRoleAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.GetForNetworkInterface(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the IP Forwarding applied to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.GetForNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the IP Forwarding applied to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.GetForRole(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String)">
+            <summary>
+            Gets the IP Forwarding applied to a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.GetForRoleAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String)">
+            <summary>
+            Gets the IP Forwarding applied to a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <returns>
+            The IP Forwarding state associated with a role or network interface.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.SetOnNetworkInterface(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.SetOnNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on network
+            interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.SetOnRole(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IPForwardingOperationsExtensions.SetOnRoleAsync(Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters)">
+            <summary>
+            Sets IP Forwarding on a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IIPForwardingOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Set IP Forwarding on role
+            operation.
             </param>
             <returns>
             The response body contains the status of the specified asynchronous
@@ -6709,6 +7605,53 @@
             information regarding the failure.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IRouteOperations.GetEffectiveRouteTableForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the effective route table for the provided network interface in
+            this subscription.
+            </summary>
+            <param name='serviceName'>
+            The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            The name of the role instance.
+            </param>
+            <param name='networkInterfaceName'>
+            The name of the network interface.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IRouteOperations.GetEffectiveRouteTableForRoleInstanceAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the effective route table for the provided role instance in
+            this subscription.
+            </summary>
+            <param name='serviceName'>
+            The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            The name of the role instance.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.IRouteOperations.GetRouteTableAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Get the specified route table for this subscription.
@@ -6851,6 +7794,132 @@
             <returns>
             A response that indicates the availability of a static IP address,
             and if not, provides a list of suggestions.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations">
+            <summary>
+            The Network Management API includes operations for managing the Virtual
+            IPs for your deployment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.AddAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Add Virtual IP operation adds a logical Virtual IP to the
+            deployment.
+            </summary>
+            <param name='serviceName'>
+            The name of the hosted service that contains the given deployment.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment where the logical Virtual IP is to be
+            added.
+            </param>
+            <param name='virtualIPName'>
+            The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.BeginAddingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Begin Adding Virtual IP operation adds a logical Virtual IP to
+            the deployment.
+            </summary>
+            <param name='serviceName'>
+            The name of the hosted service that contains the given deployment.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment where the logical Virtual IP is to be
+            added.
+            </param>
+            <param name='virtualIPName'>
+            The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.BeginRemovingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Begin Removing Virtual IP operation removes a logical Virtual
+            IP from the deployment.
+            </summary>
+            <param name='serviceName'>
+            The name of the hosted service that contains the given deployment.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment whose logical Virtual IP is to be
+            removed.
+            </param>
+            <param name='virtualIPName'>
+            The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.RemoveAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Remove Virtual IP operation removes a logical Virtual IP from
+            the deployment.
+            </summary>
+            <param name='serviceName'>
+            The name of the hosted service that contains the given deployment.
+            </param>
+            <param name='deploymentName'>
+            The name of the deployment whose logical Virtual IP is to be
+            removed.
+            </param>
+            <param name='virtualIPName'>
+            The name of the logical Virtual IP to be removed.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.Models.AddRouteTableToSubnetParameters.#ctor">
@@ -7424,6 +8493,83 @@
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.CreateRouteTableParameters.Name">
             <summary>
             Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.EffectiveNextHop">
+            <summary>
+            The next hop of this route.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.EffectiveNextHop.#ctor">
+            <summary>
+            Initializes a new instance of the EffectiveNextHop class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.EffectiveNextHop.#ctor(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Initializes a new instance of the EffectiveNextHop class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveNextHop.IpAddresses">
+            <summary>
+            Required. Gets or sets the effective next hop IP addresses.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveNextHop.Type">
+            <summary>
+            Required. Gets or sets the type of the effective next hop.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute">
+            <summary>
+            An effective route within an effective route table.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.#ctor">
+            <summary>
+            Initializes a new instance of the EffectiveRoute class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.AddressPrefixes">
+            <summary>
+            Optional. Gets or sets the address prefixes that apply to this
+            route, in CIDR format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.EffectiveNextHop">
+            <summary>
+            Required. Gets or sets the effective next hop for this route.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.Name">
+            <summary>
+            Required. Gets or sets the name of the Route.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.Source">
+            <summary>
+            Required. Gets or sets the ource of this route.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute.Status">
+            <summary>
+            Required. Gets or sets the status of this route.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRouteTable">
+            <summary>
+            An effective route table for a role instance or network interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRouteTable.#ctor">
+            <summary>
+            Initializes a new instance of the EffectiveRouteTable class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.EffectiveRouteTable.EffectiveRoutes">
+            <summary>
+            Optional. Gets or sets the routes in this effective route table
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.FrontendIPConfiguration">
@@ -8078,6 +9224,23 @@
             The different SKUs that a gateway can have.
             </summary>
         </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.GetEffectiveRouteTableResponse">
+            <summary>
+            A standard service response including an HTTP status code and request
+            ID.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.GetEffectiveRouteTableResponse.#ctor">
+            <summary>
+            Initializes a new instance of the GetEffectiveRouteTableResponse
+            class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.GetEffectiveRouteTableResponse.EffectiveRouteTable">
+            <summary>
+            Optional.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.GetRouteTableForSubnetResponse">
             <summary>
             A standard service response including an HTTP status code and request
@@ -8139,6 +9302,44 @@
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.HttpLoadBalancingRule.Type">
             <summary>
             Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingGetResponse">
+            <summary>
+            The IP Forwarding state associated with a role or network interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingGetResponse.#ctor">
+            <summary>
+            Initializes a new instance of the IPForwardingGetResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingGetResponse.State">
+            <summary>
+            Optional. Gets or sets state of IP Forwarding of a role or network
+            interface from this subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters">
+            <summary>
+            Parameters supplied to the set IP Forwarding operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters.#ctor">
+            <summary>
+            Initializes a new instance of the IPForwardingSetParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the IPForwardingSetParameters class
+            with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.IPForwardingSetParameters.State">
+            <summary>
+            Required. Gets or sets state of IPForwarding for a role or network
+            interface.Allowed values are "Enabled", "Disabled".
             </summary>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.Models.IPsecParameters.#ctor">
@@ -8493,6 +9694,11 @@
             Optional. The name of the service the IP belongs to, if used.
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPCreateParameters.VirtualIPName">
+            <summary>
+            Optional. The name of the virtual IP that we should reserve.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPGetResponse">
             <summary>
             A reserved IP associated with your subscription.
@@ -8549,6 +9755,11 @@
             <summary>
             Optional. Current status of the reserved IP. (Created, Creating,
             Updating, Deleting, or Unavailable.)
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPGetResponse.VirtualIPName">
+            <summary>
+            Optional. The name of the virtual IP that we should reserve.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPListResponse">
@@ -8634,6 +9845,11 @@
             Creating, Updating, Deleting, or Unavailable.)
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPListResponse.ReservedIP.VirtualIPName">
+            <summary>
+            Optional. The name of the virtual IP that we should reserve.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPMobilityParameters">
             <summary>
             Parameters supplied to the Create Reserved IP operation.
@@ -8653,6 +9869,12 @@
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPMobilityParameters.ServiceName">
             <summary>
             Optional. The name of the service the IP belongs to, if used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkReservedIPMobilityParameters.VirtualIPName">
+            <summary>
+            Optional. The name of the virtual IP on which we want to perform
+            the IP Mobility operation.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroup">
@@ -8678,6 +9900,31 @@
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroup.Name">
             <summary>
             Optional. Name of the Network Security Group.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters">
+            <summary>
+            Parameters supplied to the Add Network Security Group to subnet /
+            network interface / role operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters.#ctor">
+            <summary>
+            Initializes a new instance of the
+            NetworkSecurityGroupAddAssociationParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the
+            NetworkSecurityGroupAddAssociationParameters class with required
+            arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters.Name">
+            <summary>
+            Required. Gets or sets name for a Network Security Group from this
+            subscription.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters">
@@ -8738,6 +9985,29 @@
             <summary>
             Required. Gets or sets name for the Network Security Group that is
             unique to the subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupGetAssociationResponse">
+            <summary>
+            The Network Security Group associated with an entity: subnet, network
+            interface or role.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupGetAssociationResponse.#ctor">
+            <summary>
+            Initializes a new instance of the
+            NetworkSecurityGroupGetAssociationResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupGetAssociationResponse.Name">
+            <summary>
+            Optional. Gets or sets name of the Network Security Group
+            associated with this subnet from this subscription.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupGetAssociationResponse.State">
+            <summary>
+            Optional.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupGetDetailLevelTypes">
@@ -9012,9 +10282,14 @@
             Initializes a new instance of the NextHop class.
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NextHop.IpAddress">
+            <summary>
+            Optional. Gets or sets the next hop IP addresses.
+            </summary>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.NextHop.Type">
             <summary>
-            Optional.
+            Optional. Gets or sets the type of the next hop.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.Models.Protocol">
@@ -9064,22 +10339,22 @@
         </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.Route.Metric">
             <summary>
-            Optional.
+            Optional. Gets or sets the metric of this route.
             </summary>
         </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.Route.Name">
             <summary>
-            Optional.
+            Optional. Gets or sets the name of this route.
             </summary>
         </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.Route.NextHop">
             <summary>
-            Optional.
+            Optional. Gets or sets the next hop of this route.
             </summary>
         </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.Models.Route.State">
             <summary>
-            Optional.
+            Optional. Gets or sets the state of this route.
             </summary>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.Models.RouteTable.#ctor">
@@ -9391,6 +10666,13 @@
             for more information)
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.NetworkManagementClient.IPForwarding">
+            <summary>
+            The Network Management API includes operations for managing the IP
+            Forwarding for your roles and network interfaces in your
+            subscription.
+            </summary>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Management.Network.NetworkManagementClient.Networks">
             <summary>
             The Network Management API includes operations for managing the
@@ -9421,6 +10703,12 @@
             <summary>
             The Network Management API includes operations for managing the
             static IPs for your subscription.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.NetworkManagementClient.VirtualIPs">
+            <summary>
+            The Network Management API includes operations for managing the
+            Virtual IPs for your deployment.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Network.NetworkManagementClientExtensions">
@@ -9763,7 +11051,74 @@
             Reference to the service client.
             </param>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.AddToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters,System.Threading.CancellationToken)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.AddToNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.AddToRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.AddToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -9792,7 +11147,74 @@
             information regarding the failure.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginAddingToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters,System.Threading.CancellationToken)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginAddingToNetworkInterfaceAsync(System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginAddingToRoleAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginAddingToSubnetAsync(System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters,System.Threading.CancellationToken)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -9878,6 +11300,71 @@
             </param>
             <param name='ruleName'>
             Required. The name of the rule to delete.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginRemovingFromNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.BeginRemovingFromRoleAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
             </param>
             <param name='cancellationToken'>
             Cancellation token.
@@ -10044,6 +11531,52 @@
             A Network Security Group associated with your subscription.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.GetForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the Network Security Group applied to a specific network
+            interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.GetForRoleAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the Network Security Group applied to a specific role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.GetForSubnetAsync(System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             Gets the Network Security Group applied to a specific subnet.
@@ -10058,7 +11591,8 @@
             Cancellation token.
             </param>
             <returns>
-            The Network Security Group associated with a subnet.
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.ListAsync(System.Threading.CancellationToken)">
@@ -10070,6 +11604,71 @@
             </param>
             <returns>
             The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.RemoveFromNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.RemoveFromRoleAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperations.RemoveFromSubnetAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
@@ -10143,7 +11742,145 @@
             more information)
             </summary>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToNetworkInterface(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToRole(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToRoleAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -10173,7 +11910,7 @@
             information regarding the failure.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToSubnetAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.AddToSubnetAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -10203,7 +11940,145 @@
             information regarding the failure.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToNetworkInterface(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            a network interface operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToRole(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToRoleAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
+            <summary>
+            Adds a Network Security Group to a Role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Add Network Security Group to
+            Role operation.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -10233,7 +12108,7 @@
             information regarding the failure.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToSubnetAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddToSubnetParameters)">
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginAddingToSubnetAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,Microsoft.WindowsAzure.Management.Network.Models.NetworkSecurityGroupAddAssociationParameters)">
             <summary>
             Adds a Network Security Group to a subnet.
             </summary>
@@ -10402,6 +12277,140 @@
             </param>
             <param name='ruleName'>
             Required. The name of the rule to delete.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginRemovingFromNetworkInterface(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginRemovingFromNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginRemovingFromRole(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.BeginRemovingFromRoleAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
             </param>
             <returns>
             The response body contains the status of the specified asynchronous
@@ -10727,6 +12736,102 @@
             A Network Security Group associated with your subscription.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForNetworkInterface(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the Network Security Group applied to a specific network
+            interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the Network Security Group applied to a specific network
+            interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForRole(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String)">
+            <summary>
+            Gets the Network Security Group applied to a specific role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForRoleAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String)">
+            <summary>
+            Gets the Network Security Group applied to a specific role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <returns>
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String)">
             <summary>
             Gets the Network Security Group applied to a specific subnet.
@@ -10742,7 +12847,8 @@
             Required.
             </param>
             <returns>
-            The Network Security Group associated with a subnet.
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.GetForSubnetAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String)">
@@ -10760,7 +12866,8 @@
             Required.
             </param>
             <returns>
-            The Network Security Group associated with a subnet.
+            The Network Security Group associated with an entity: subnet,
+            network interface or role.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.List(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations)">
@@ -10785,6 +12892,140 @@
             </param>
             <returns>
             The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.RemoveFromNetworkInterface(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.RemoveFromNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a network interface.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkInterfaceName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.RemoveFromRole(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.RemoveFromRoleAsync(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes a Network Security Group from a role.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations.
+            </param>
+            <param name='serviceName'>
+            Required.
+            </param>
+            <param name='deploymentName'>
+            Required.
+            </param>
+            <param name='roleName'>
+            Required.
+            </param>
+            <param name='networkSecurityGroupName'>
+            Required.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.NetworkSecurityGroupOperationsExtensions.RemoveFromSubnet(Microsoft.WindowsAzure.Management.Network.INetworkSecurityGroupOperations,System.String,System.String,System.String)">
@@ -11840,6 +14081,53 @@
             information regarding the failure.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperations.GetEffectiveRouteTableForNetworkInterfaceAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the effective route table for the provided network interface in
+            this subscription.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <param name='networkInterfaceName'>
+            Required. The name of the network interface.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperations.GetEffectiveRouteTableForRoleInstanceAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the effective route table for the provided role instance in
+            this subscription.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperations.GetRouteTableAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Get the specified route table for this subscription.
@@ -12444,6 +14732,104 @@
             information regarding the failure.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperationsExtensions.GetEffectiveRouteTableForNetworkInterface(Microsoft.WindowsAzure.Management.Network.IRouteOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get the effective route table for the provided network interface in
+            this subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IRouteOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <param name='networkInterfaceName'>
+            Required. The name of the network interface.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperationsExtensions.GetEffectiveRouteTableForNetworkInterfaceAsync(Microsoft.WindowsAzure.Management.Network.IRouteOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get the effective route table for the provided network interface in
+            this subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IRouteOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <param name='networkInterfaceName'>
+            Required. The name of the network interface.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperationsExtensions.GetEffectiveRouteTableForRoleInstance(Microsoft.WindowsAzure.Management.Network.IRouteOperations,System.String,System.String,System.String)">
+            <summary>
+            Get the effective route table for the provided role instance in
+            this subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IRouteOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperationsExtensions.GetEffectiveRouteTableForRoleInstanceAsync(Microsoft.WindowsAzure.Management.Network.IRouteOperations,System.String,System.String,System.String)">
+            <summary>
+            Get the effective route table for the provided role instance in
+            this subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IRouteOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the cloud service.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment.
+            </param>
+            <param name='roleinstanceName'>
+            Required. The name of the role instance.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Network.RouteOperationsExtensions.GetRouteTable(Microsoft.WindowsAzure.Management.Network.IRouteOperations,System.String)">
             <summary>
             Get the specified route table for this subscription.
@@ -12793,6 +15179,414 @@
             <returns>
             A response that indicates the availability of a static IP address,
             and if not, provides a list of suggestions.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations">
+            <summary>
+            The Network Management API includes operations for managing the Virtual
+            IPs for your deployment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.#ctor(Microsoft.WindowsAzure.Management.Network.NetworkManagementClient)">
+            <summary>
+            Initializes a new instance of the VirtualIPOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.AddAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Add Virtual IP operation adds a logical Virtual IP to the
+            deployment.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.BeginAddingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Begin Adding Virtual IP operation adds a logical Virtual IP to
+            the deployment.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.BeginRemovingAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Begin Removing Virtual IP operation removes a logical Virtual
+            IP from the deployment.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.RemoveAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Remove Virtual IP operation removes a logical Virtual IP from
+            the deployment.
+            </summary>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be removed.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Network.VirtualIPOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.Network.NetworkManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions">
+            <summary>
+            The Service Management API includes operations for managing the virtual
+            networks for your subscription.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/jj157182.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.Add(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Add Virtual IP operation adds a logical Virtual IP to the
+            deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.AddAsync(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Add Virtual IP operation adds a logical Virtual IP to the
+            deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.BeginAdding(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Begin Adding Virtual IP operation adds a logical Virtual IP to
+            the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.BeginAddingAsync(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Begin Adding Virtual IP operation adds a logical Virtual IP to
+            the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment where the logical Virtual IP
+            is to be added.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.BeginRemoving(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Begin Removing Virtual IP operation removes a logical Virtual
+            IP from the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.BeginRemovingAsync(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Begin Removing Virtual IP operation removes a logical Virtual
+            IP from the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be added.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.Remove(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Remove Virtual IP operation removes a logical Virtual IP from
+            the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be removed.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Network.VirtualIPOperationsExtensions.RemoveAsync(Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations,System.String,System.String,System.String)">
+            <summary>
+            The Remove Virtual IP operation removes a logical Virtual IP from
+            the deployment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Network.IVirtualIPOperations.
+            </param>
+            <param name='serviceName'>
+            Required. The name of the hosted service that contains the given
+            deployment.
+            </param>
+            <param name='deploymentName'>
+            Required. The name of the deployment whose logical Virtual IP is to
+            be removed.
+            </param>
+            <param name='virtualIPName'>
+            Required. The name of the logical Virtual IP to be removed.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself. If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request. If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
             </returns>
         </member>
     </members>

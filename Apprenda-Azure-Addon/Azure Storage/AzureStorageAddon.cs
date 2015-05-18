@@ -40,9 +40,10 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 do
                 {
                     var verificationResponse = client.StorageAccounts.Get(parameters.Name);
-
+                    provisionResult.EndUserMessage += "Getting into the 'if' statement\n ";
                     if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Created))
                     {
+                        provisionResult.EndUserMessage += "We're in the 'if' statement\n";
                         var azureconnectioninfo = client.StorageAccounts.Get(devOptions.StorageAccountName);
                         var keysForStorageUnit = client.StorageAccounts.GetKeys(devOptions.StorageAccountName);
 
@@ -54,6 +55,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                             Uri = keysForStorageUnit.Uri.ToString()
                         };
                         provisionResult.ConnectionData = connectionInfo.ToString();
+                        provisionResult.EndUserMessage += "Connection Data: " + connectionInfo.ToString();
                         provisionResult.IsSuccess = true;
                         break;
                     }
@@ -63,9 +65,10 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             }
             catch (Exception e)
             {
-                provisionResult.EndUserMessage = e.Message;
+                provisionResult.EndUserMessage = e.Message + "\n We're in an error\n";
             }
 
+            //provisionResult.ConnectionData = "Some Connection Data, yo";
             return provisionResult;
         }
 
@@ -171,11 +174,13 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         {
             testProgress += "Parsing manifest...\n";
             var manifestprops = manifest.GetProperties().ToDictionary(x => x.Key, x => x.Value);
+            var hardcodeAuth = "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";
             testProgress += "Getting credentials...\n";
             // set up the credentials for azure
             testProgress += "Sub ID is: " + manifestprops["AzureManagementSubscriptionID"] + "\n";
-            testProgress += "Auth key is: " + manifestprops["AzureAuthenticationKey"] + "\n";
-            var creds = Azure.CertificateAuthenticationHelper.getCredentials(manifestprops["AzureManagementSubscriptionID"], manifestprops["AzureAuthenticationKey"]);
+            //testProgress += "Auth key is: " + manifestprops["AzureAuthenticationKey"] + "\n";
+            testProgress += "Auth key is:" + hardcodeAuth + "\n";
+            var creds = Azure.CertificateAuthenticationHelper.getCredentials(manifestprops["AzureManagementSubscriptionID"], hardcodeAuth);
             // set up the storage management client
             var client = new StorageManagementClient(creds);
             testProgress += "Successfully returned credentials.\n";

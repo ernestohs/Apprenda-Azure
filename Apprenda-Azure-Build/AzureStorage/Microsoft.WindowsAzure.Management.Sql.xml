@@ -1253,6 +1253,24 @@
             Contains the response to a Get Database Event Logs request.
             </returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations.GetUsagesAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns information about an Azure SQL Database usages.
+            </summary>
+            <param name='serverName'>
+            The name of the Azure SQL Database Server on which the database is
+            hosted.
+            </param>
+            <param name='databaseName'>
+            The name of the Azure SQL Database.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Contains the response to a Get Database Usages request.
+            </returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations.ListAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Returns a collection of Azure SQL Databases.
@@ -1373,6 +1391,24 @@
             </param>
             <returns>
             Contains the response to a Get Database Event Logs request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.DatabaseOperations.GetUsagesAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns information about an Azure SQL Database usages.
+            </summary>
+            <param name='serverName'>
+            Required. The name of the Azure SQL Database Server on which the
+            database is hosted.
+            </param>
+            <param name='databaseName'>
+            Required. The name of the Azure SQL Database.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Contains the response to a Get Database Usages request.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Sql.DatabaseOperations.ListAsync(System.String,System.Threading.CancellationToken)">
@@ -1584,6 +1620,44 @@
             </param>
             <returns>
             Contains the response to a Get Database Event Logs request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.DatabaseOperationsExtensions.GetUsages(Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations,System.String,System.String)">
+            <summary>
+            Returns information about an Azure SQL Database usages.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations.
+            </param>
+            <param name='serverName'>
+            Required. The name of the Azure SQL Database Server on which the
+            database is hosted.
+            </param>
+            <param name='databaseName'>
+            Required. The name of the Azure SQL Database.
+            </param>
+            <returns>
+            Contains the response to a Get Database Usages request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.DatabaseOperationsExtensions.GetUsagesAsync(Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations,System.String,System.String)">
+            <summary>
+            Returns information about an Azure SQL Database usages.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations.
+            </param>
+            <param name='serverName'>
+            Required. The name of the Azure SQL Database Server on which the
+            database is hosted.
+            </param>
+            <param name='databaseName'>
+            Required. The name of the Azure SQL Database.
+            </param>
+            <returns>
+            Contains the response to a Get Database Usages request.
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Management.Sql.DatabaseOperationsExtensions.List(Microsoft.WindowsAzure.Management.Sql.IDatabaseOperations,System.String)">
@@ -3576,6 +3650,72 @@
             <summary>
             Optional. The database object returned from the call to Update
             Database reflecting the changes made.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric">
+            <summary>
+            Represents a database's usage in the Azure SQL Database service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseUsageMetric class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.CurrentValue">
+            <summary>
+            Optional. Gets the current value of the usage.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.Limit">
+            <summary>
+            Optional. Gets the current limit of usage.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.Name">
+            <summary>
+            Optional. Gets the name of the usage.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.NextResetTime">
+            <summary>
+            Optional. Gets the timestamp of when the current value gets reset.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.ResourceName">
+            <summary>
+            Optional. Gets the name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsageMetric.Unit">
+            <summary>
+            Optional. Gets the units the usage is expressed in.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsagesListResponse">
+            <summary>
+            Contains the response to a Get Database Usages request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsagesListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the DatabaseUsagesListResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsagesListResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of Usages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsagesListResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of Usages.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Sql.Models.DatabaseUsagesListResponse.Usages">
+            <summary>
+            Optional. Gets or sets the database that was returned from the
+            service in response to the get operation.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Management.Sql.Models.FirewallRule">
