@@ -63,7 +63,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             }
             catch (Exception e)
             {
-                provisionResult.EndUserMessage = e.Message;
+                provisionResult.IsSuccess = false;
+                provisionResult.EndUserMessage = e.Message + "\n We're in an error\n";
             }
 
             return provisionResult;
@@ -145,7 +146,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                     // set up the credentials for azure
 
                     var client = EstablishClient(manifest, devOptions, ref testProgress);
-                    
+
                     var listOfStorageAccounts = client.StorageAccounts.List();
 
                     testProgress += string.Format("Number of Accounts: '{0}'", listOfStorageAccounts.Count());
@@ -156,11 +157,14 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 }
                 catch (Exception e)
                 {
+                    // adding a forced failure here.
+                    testResult.IsSuccess = false;
                     testResult.EndUserMessage = testProgress + "\nEXCEPTION: " + e.Message;
                 }
             }
             else
             {
+                testResult.IsSuccess = false;
                 testResult.EndUserMessage = "Missing required manifest properties (requireDevCredentials)";
             }
 
