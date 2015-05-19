@@ -108,8 +108,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe" -file C:/users/cdutra/Documents\github\apprenda-aws\PackageFiles.ps1 "C:\users\cdutra\Documents\GitHub\Apprenda-Azure\Apprenda-Azure-Build\ServiceBus.zip" "C:\Users\cdutra\Documents\GitHub\Apprenda-Azure\Apprenda-Azure-Build\AzureServiceBus"
-"C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe" -file C:/users/cdutra/Documents\github\apprenda-aws\PackageFiles.ps1 "C:\users\cdutra\Dropbox\Apprenda\Microsoft\ServiceBus.zip" C:\Users\cdutra\Documents\GitHub\Apprenda-Azure\Apprenda-Azure-Build\AzureServiceBus"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
