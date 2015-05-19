@@ -5,33 +5,25 @@
 			   xsi:schemaLocation="http://schemas.apprenda.com/AddonManifest http://apprenda.com/schemas/platform/5.0/AddonManifest.xsd"
                name="Azure Storage"
                description="Azure provides scalable, durable cloud storage, backup, and recovery solutions for any data, big and small. It works with the infrastructure you already have to cost-effectively enhance your business continuity strategy as well as provide storage required by your cloud applications including unstructured text or binary data such as video, audio and images."
-               deploymentNotes="Configured to work on .NET 4.5 runtime, and Apprenda 6.0"
+               deploymentNotes="This addon currently support blob storage containers and the creation of new storage accounts. Tables and Queues are not yet supported."
                developerHelp="contact cdutra@apprenda.com for assistance."
                vendor="Apprenda"
                author="Chris Dutra"
-               version="1.0.0"
+               version="1.1.0"
                provisioningUsername="fluffy@apprenda.com"
                provisioningPassword="password"
                provisioningLocation=""
                manifestVersion="2">
   <properties>
-<<<<<<< HEAD
-    <property key="StorageAccountName" displayName="Azure Storage Account Name" description="" value="" />
     <property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value="" />
     <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="" value=""/>
     <property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
-=======
-	<property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value=""/>
-    <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="Must be less than 255 characters in length" value=""/>
-    <property key="RequireDevCredentials" displayName="Require Developer Credentials" description="If set to true, each developer will need to provide their own Azure credentials, otherwise the default creds will be used to provision Azure Storage instances." value="false"  />
-	<property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
->>>>>>> origin/master
-    <property key="Description" displayName="" description="" value="Creating storage for Dutron application."/>
     <property key="GeoReplicationEnabled" displayName="Geo Replication Option" description="Set to false if you do not want your storage replicated globally. Default is true." value="true"/>
-    <property key="Location" displayName="" description="" value="East US"/>
+    <property key="Location" displayName="Azure Storage Location" description="The location of the storage account you are referencing/creating." value="East US"/>
   </properties>
-  
   <parameters allowUserDefinedParameters="true">
-	<parameter key="StorageAccountName" displayName="Azure Storage Account Name" description=""/>
+    <parameter key="NewStorageAccount" displayName="Create New Storage Account" description="Use this if you require isolation for your data at the storage account level" />
+	  <parameter key="StorageAccountName" displayName="Azure Storage Account Name" description="If you are creating a new storage account, specify it here. Otherwise, reference the storage account you are using."/>
+    <parameter key="ContainerName" displayName="Azure Storage Blob Container Name" description="Specify the name of the blog storage account." />
   </parameters>
 </addonManifest>

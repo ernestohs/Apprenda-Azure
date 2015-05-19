@@ -16,7 +16,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         private String AzureUrl { get; set; }
         internal String Location { get; private set; }
         private String DeveloperId { get; set; }
-
+        internal bool NewStorageAccountFlag { get; private set; }
+        internal String ContainerName { get; private set; }
 
         public static DeveloperParameters Parse(IEnumerable<AddonParameter> parameters, IEnumerable<IAddOnPropertyDefinition> manifestProperties)
         {
@@ -35,9 +36,24 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
         private static DeveloperParameters MapToOption(DeveloperParameters options, String key, String value)
         {
+            if("newstorageaccount".Equals(key))
+            {
+                bool result;
+                if (!bool.TryParse(value, out result))
+                {
+                    throw new ArgumentException("Tried to pass in a non-boolean value for this option. Please check your options.");
+                }
+                options.NewStorageAccountFlag = result;
+                return options;
+            }
             if ("storageaccountname".Equals(key))
             {
                 options.StorageAccountName = value;
+                return options;
+            }
+            if ("containername".Equals(key))
+            {
+                options.ContainerName = value;
                 return options;
             }
             if ("azuremanagementsubscriptionid".Equals(key))
