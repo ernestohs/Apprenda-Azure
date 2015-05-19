@@ -17,6 +17,7 @@ foreach($child in $modules)
     $moduleName = $child.Name
     $modulePath = $child.FullName
     $buildDir = "$PSScriptRoot\Apprenda-Azure-Build\$moduleName"
+    $archiveDir = "$PSScriptRoot\Apprenda-Azure-Build\Archive"
     echo "ModuleName : $moduleName"
     echo "ModulePath : $modulePath"
     echo "Build Directory: $buildDir"
@@ -26,18 +27,27 @@ foreach($child in $modules)
         echo "Test path for $buildDir works."
         # if exists, back it up.
         $date = Get-Date -UFormat "%Y%m%d%H%M%S"
-        #mv $buildDir "$currentPath\Archive\$moduleName.$date"
+        # if the archive directory isn't set up, then create it
+        if(!(Test-Path $archiveDir)) { mkdir $archiveDir }
+        Zip-Directory -DestinationFileName "$archiveDir\$moduleName.Debug.$date.zip" -SourceDirectory $buildDir\Debug 
+        Zip-Directory -DestinationFileName "$archiveDir\$moduleName.Release.$date.zip" -SourceDirectory $buildDir\Release 
+        rm -Recurse $buildDir
     }
-    #mkdir $buildDir
+    
+    mkdir $buildDir
     # recurive traversal to find bin folder.
     $bin = Get-ChildItem $modulePath -Recurse | ?{$_.Name.Equals("bin")}
     $binPath = $bin.FullName
 
-    echo $binPath
-    #cp -Recurse $binPath\* $buildDir
+    # package up both debug and release
+    mkdir $buildDir\Debug
+    mkdir $buildDir\Release
+    cp -Recurse $binPath\Debug\* $buildDir\Debug
+    cp -Recurse $binPath\Release\* $buildDir\Release
 
     # just add them 1 by 1
-    #Zip-Directory -DestinationFileName "$currentPath\$modulePath.latest.zip" -SourceDirectory $buildDir
+    Zip-Directory -DestinationFileName "$PSScriptRoot\$moduleName.Debug.latest.zip" -SourceDirectory $buildDir\Debug
+    Zip-Directory -DestinationFileName "$PSScriptRoot\$moduleName.Release.latest.zip" -SourceDirectory $buildDir\Release
 }
 
 function Zip-Directory {

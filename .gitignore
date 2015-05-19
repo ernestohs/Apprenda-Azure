@@ -153,3 +153,5 @@ $RECYCLE.BIN/
 
 # we don't need this.
 Apprenda-Azure-Build/
+*Debug.latest.zip
+*Release.latest.zip
