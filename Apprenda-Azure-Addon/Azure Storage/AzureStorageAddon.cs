@@ -8,7 +8,7 @@ using SubscriptionCloudCredentials = Microsoft.Azure.SubscriptionCloudCredential
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
-    public class AzureStorageAddonImpl : AddonBase
+    public class AzureStorageAddon : AddonBase
     {
         public override ProvisionAddOnResult Provision(AddonProvisionRequest request)
         {
