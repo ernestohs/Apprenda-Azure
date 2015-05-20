@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedLibraries", "SharedLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Utilities.Test", "Azure Utilities.Test\Azure Utilities.Test.csproj", "{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Storage.Test", "Azure Storage.Test\Azure Storage.Test.csproj", "{BC22D1B1-DF1D-40FD-8ADD-C6D257D262B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC22D1B1-DF1D-40FD-8ADD-C6D257D262B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC22D1B1-DF1D-40FD-8ADD-C6D257D262B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC22D1B1-DF1D-40FD-8ADD-C6D257D262B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC22D1B1-DF1D-40FD-8ADD-C6D257D262B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

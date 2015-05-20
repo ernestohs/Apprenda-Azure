@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apprenda.Utils, Version=6.0.999.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SaaSGrid.API.6.0.0.1\lib\net45\Apprenda.Utils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>
@@ -79,6 +83,10 @@
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SaaSGrid.API, Version=6.0.999.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SaaSGrid.API.6.0.0.1\lib\net45\SaaSGrid.API.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

@@ -34,6 +34,10 @@
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apprenda.Utils, Version=6.0.999.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SaaSGrid.API.6.0.0.1\lib\net45\Apprenda.Utils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
@@ -138,9 +142,9 @@
       <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SaaSGrid.API, Version=5.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Apprenda\SDK\API Files\SaaSGrid.API.dll</HintPath>
+    <Reference Include="SaaSGrid.API, Version=6.0.999.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SaaSGrid.API.6.0.0.1\lib\net45\SaaSGrid.API.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
