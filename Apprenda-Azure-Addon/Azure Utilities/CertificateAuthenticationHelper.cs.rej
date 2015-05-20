@@ -1,0 +1,9 @@
+diff a/Apprenda-Azure-Addon/Azure Utilities/CertificateAuthenticationHelper.cs b/Apprenda-Azure-Addon/Azure Utilities/CertificateAuthenticationHelper.cs	(rejected hunks)
+@@ -6,7 +6,6 @@
+ {
+     public static class CertificateAuthenticationHelper
+     {
+-        ///private const String subsId = "0b26f491-54b9-4a23-a048-821f3cb4d841";
+         public static SubscriptionCloudCredentials GetCredentials(string subscriptionId, string base64Encodedcert)
+         {
+             return new CertificateCloudCredentials(subscriptionId, new X509Certificate2(Convert.FromBase64String(base64Encodedcert)));

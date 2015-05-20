@@ -66,7 +66,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.ServiceBus
             return provisionResult;
         }
 
-        private StorageAccountCreateParameters CreateStorageAccountParameters(DeveloperParameters developerOptions)
+        private static StorageAccountCreateParameters CreateStorageAccountParameters(DeveloperParameters developerOptions)
         {
             var parameters = new StorageAccountCreateParameters
             {
