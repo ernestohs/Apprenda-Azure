@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Storage", "Apprenda-Azure-Addon\Azure Storage\Azure Storage.csproj", "{1B07F1ED-C9F1-4681-BFC7-79CD0AEA7BE8}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Utilities", "Apprenda-Azure-Addon\Azure Utilities\Azure Utilities.csproj", "{DD49E301-3BE2-4FA6-A95C-D19111C85229}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedLibraries", "SharedLibraries", "{298EE348-54BC-4C9C-9DCA-BEF4E13FAE59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Utilities.Test", "Azure Utilities.Test\Azure Utilities.Test.csproj", "{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD49E301-3BE2-4FA6-A95C-D19111C85229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C325CAA-F2C7-4EAB-8F40-46EA153E7131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

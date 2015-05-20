@@ -1,54 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Apprenda.SaaSGrid.Addons.Azure
 {
-    internal class DeveloperOptions
+    internal class DeveloperParameters
     {
         private string DeveloperAlias { get; set; }
         internal string AffinityGroup { get; set; }
         internal string Description { get; set; }
         internal bool GeoReplicationEnabled { get; set; }
-        internal String StorageAccountName { get; set; }
-        internal String AzureManagementSubscriptionId { get; set; }
-        internal String AzureAuthenticationKey { get; set; }
-        private String AzureUrl { get; set; }
-        internal String Location { get; set; }
-        private String RequireDevCredentials { get; set; }
-        private String DeveloperID { get; set; }
+        internal string StorageAccountName { get; set; }
+        internal string AzureManagementSubscriptionId { get; set; }
+        internal string AzureAuthenticationKey { get; set; }
+        private string AzureUrl { get; set; }
+        internal string Location { get; set; }
+        private string RequireDevCredentials { get; set; }
+        private string DeveloperID { get; set; }
 
 
-        public static DeveloperOptions Parse(String developerOptions, DeveloperOptions options)
+        public static DeveloperParameters Parse(IEnumerable<AddonParameter> inputAddonParameters, IEnumerable<IAddOnPropertyDefinition> manifestProperties)
         {
-            if (!string.IsNullOrWhiteSpace(developerOptions))
-            {
-                string[] optionPairs = developerOptions.Split(new[] {'&'}, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string optionPair in optionPairs)
-                {
-                    string[] optionPairParts = optionPair.Split(new[] {'='}, StringSplitOptions.RemoveEmptyEntries);
-                    if (optionPairParts.Length == 2)
-                    {
-                        options = MapToOption(options, optionPairParts[0].Trim().ToLowerInvariant(),
-                            optionPairParts[1].Trim());
-                    }
-                    else
-                    {
-                        throw new ArgumentException(
-                            string.Format(
-                                "Unable to parse developer options which should be in the form of 'option=value&nextOption=nextValue'. The option '{0}' was not properly constructed",
-                                optionPair));
-                    }
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Developer Options String is empty.");
-            }
-
-            return options;
+            var options = new DeveloperParameters();
+            // add values from manifest first
+            options = ParseManifest(manifestProperties, options);
+            // now add values from developer parameters
+            return inputAddonParameters.Aggregate(options, (current, addonParameter) => MapToOption(current, addonParameter.Key, addonParameter.Value));
         }
 
-        private static DeveloperOptions MapToOption(DeveloperOptions options, String key, String value)
+        private static DeveloperParameters MapToOption(DeveloperParameters options, string key, string value)
         {
             if ("storageaccountname".Equals(key))
             {
@@ -115,8 +95,9 @@ namespace Apprenda.SaaSGrid.Addons.Azure
                 string.Format("The option provided '{0}' does not parse, please try your request again.", key));
         }
 
-        internal static DeveloperOptions ParseManifest(IEnumerable<IAddOnPropertyDefinition> manifestProperties,
-            DeveloperOptions _devOptions)
+        // change this to private
+        private static DeveloperParameters ParseManifest(IEnumerable<IAddOnPropertyDefinition> manifestProperties,
+            DeveloperParameters _devOptions)
         {
             if (manifestProperties != null)
             {

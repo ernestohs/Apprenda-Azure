@@ -100,7 +100,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var deprovisionResult = new ProvisionAddOnResult(connectionData);
             var devOptions = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
             // set up the credentials for azure
-            SubscriptionCloudCredentials creds = CertificateAuthenticationHelper.getCredentials(devOptions.AzureManagementSubscriptionId, devOptions.AzureAuthenticationKey);
+            SubscriptionCloudCredentials creds = CertificateAuthenticationHelper.GetCredentials(devOptions.AzureManagementSubscriptionId, devOptions.AzureAuthenticationKey);
             // set up the storage management client
             var client = new StorageManagementClient(creds);
 
@@ -179,7 +179,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             // set up the credentials for azure
             testProgress += "Sub ID is: " + manifestprops["AzureManagementSubscriptionID"] + "\n";
             testProgress += "Auth key is: " + manifestprops["AzureAuthenticationKey"] + "\n";
-            var creds = Azure.CertificateAuthenticationHelper.getCredentials(manifestprops["AzureManagementSubscriptionID"], manifestprops["AzureAuthenticationKey"]);
+            var creds = Azure.CertificateAuthenticationHelper.GetCredentials(manifestprops["AzureManagementSubscriptionID"], manifestprops["AzureAuthenticationKey"]);
             // set up the storage management client
             var client = new StorageManagementClient(creds);
             testProgress += "Successfully returned credentials.\n";
