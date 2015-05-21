@@ -90,6 +90,13 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         }
 
         [Test]
+        public void ClientTest()
+        {
+            
+        }
+
+
+        [Test]
         public void ProvisionTest()
         {
             var output = new AzureStorageAddon().Provision(ProvisionRequest);
@@ -102,7 +109,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         public void DeProvisionTest()
         {
             var output = new AzureStorageAddon().Deprovision(DeprovisionRequest);
-            Assert.That(output, Is.TypeOf<ProvisionAddOnResult>());
+            Assert.That(output, Is.TypeOf<OperationResult>());
             Assert.That(output.IsSuccess, Is.EqualTo(true));
         }
 
@@ -111,7 +118,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         public void SocTest()
         {
             var output = new AzureStorageAddon().Test(TestRequest);
-            Assert.That(output, Is.TypeOf<ProvisionAddOnResult>());
+            Assert.That(output, Is.TypeOf<OperationResult>());
             Assert.That(output.IsSuccess, Is.EqualTo(true));
         }
     }

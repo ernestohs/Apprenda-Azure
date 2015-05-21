@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
@@ -25,11 +24,17 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var options = new DeveloperParameters();
             if (parameters != null)
             {
-                options = parameters.Aggregate(options, (current, parameter) => MapToOption(current, parameter.Key.ToLowerInvariant(), parameter.Value));
+                foreach (var param in parameters)
+                {
+                    options = MapToOption(options, param.Key, param.Value);
+                }
             }
             if (manifestProperties != null)
             {
-                options = manifestProperties == null ? options : manifestProperties.Where(i => i.Value != null && i.Key != null).Aggregate(options, (current, i) => MapToOption(current, i.Key.Trim().ToLowerInvariant(), i.Value.Trim()));
+                foreach (var prop in manifestProperties)
+                {
+                    options = MapToOption(options, prop.Key, prop.Value);
+                }
             }
             return options;
         }

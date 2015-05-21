@@ -2,6 +2,18 @@
 # Author: Chris Dutra
 # Contact: cdutra@apprenda.com
 
+function Zip-Directory {
+    Param(
+      [Parameter(Mandatory=$True)][string]$DestinationFileName,
+      [Parameter(Mandatory=$True)][string]$SourceDirectory,
+      [Parameter(Mandatory=$False)][string]$CompressionLevel = "Optimal",
+      [Parameter(Mandatory=$False)][switch]$IncludeParentDir
+    )
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $CompressionLevel    = [System.IO.Compression.CompressionLevel]::$CompressionLevel  
+    [System.IO.Compression.ZipFile]::CreateFromDirectory($SourceDirectory, $DestinationFileName, $CompressionLevel, $IncludeParentDir)
+}
+
 # Just to be safe...
 Set-ExecutionPolicy Unrestricted -Scope Process
 # get the path of this file, no matter where its run
@@ -32,6 +44,8 @@ foreach($child in $modules)
         Zip-Directory -DestinationFileName "$archiveDir\$moduleName.Debug.$date.zip" -SourceDirectory $buildDir\Debug 
         Zip-Directory -DestinationFileName "$archiveDir\$moduleName.Release.$date.zip" -SourceDirectory $buildDir\Release 
         rm -Recurse $buildDir
+        rm "$PSScriptRoot\$moduleName.Debug.latest.zip"
+        rm "$PSScriptRoot\$moduleName.Release.latest.zip"
     }
     
     mkdir $buildDir
@@ -50,14 +64,3 @@ foreach($child in $modules)
     Zip-Directory -DestinationFileName "$PSScriptRoot\$moduleName.Release.latest.zip" -SourceDirectory $buildDir\Release
 }
 
-function Zip-Directory {
-    Param(
-      [Parameter(Mandatory=$True)][string]$DestinationFileName,
-      [Parameter(Mandatory=$True)][string]$SourceDirectory,
-      [Parameter(Mandatory=$False)][string]$CompressionLevel = "Optimal",
-      [Parameter(Mandatory=$False)][switch]$IncludeParentDir
-    )
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    $CompressionLevel    = [System.IO.Compression.CompressionLevel]::$CompressionLevel  
-    [System.IO.Compression.ZipFile]::CreateFromDirectory($SourceDirectory, $DestinationFileName, $CompressionLevel, $IncludeParentDir)
-}

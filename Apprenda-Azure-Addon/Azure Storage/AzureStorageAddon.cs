@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
-using OperationStatusResponse = Microsoft.Azure.OperationStatusResponse;
-using SubscriptionCloudCredentials = Microsoft.Azure.SubscriptionCloudCredentials;
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
@@ -16,50 +14,39 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var manifest = request.Manifest;
             try
             {
-                var devOptions = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
-                // establish MSFT Azure Storage client
-                var filler = "";
+                var devParameters = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
 
-                var client = EstablishClient(manifest, devOptions, ref filler);
+                SubscriptionCloudCredentials creds = CertificateAuthenticationHelper.GetCredentials(devParameters.AzureManagementSubscriptionId, devParameters.AzureAuthenticationKey);
 
-                var uniqueIdIfNeeded = 0;
-                if (devOptions.StorageAccountName == null)
+                // ok so if we need a storage account, we need to use the storage management client.
+                if (devParameters.NewStorageAccountFlag)
                 {
-                    throw new ArgumentNullException(devOptions.StorageAccountName);
-                }
-                var nameIsAvailable = client.StorageAccounts.CheckNameAvailability(devOptions.StorageAccountName);
-                // as might be the case, this will increment and append a numeral onto the end of the storage account name in order to uniquely qualify it.
-                while (!nameIsAvailable.IsAvailable)
-                {
-                    devOptions.StorageAccountName = string.Concat(devOptions.StorageAccountName, uniqueIdIfNeeded++);
-                    nameIsAvailable = client.StorageAccounts.CheckNameAvailability(devOptions.StorageAccountName);
-                }
-                StorageAccountCreateParameters parameters = CreateStorageAccountParameters(devOptions);
-                OperationStatusResponse mResponse = client.StorageAccounts.Create(parameters);
-
-                do
-                {
-                    var verificationResponse = client.StorageAccounts.Get(parameters.Name);
-
-                    if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Created))
+                    var client = new StorageManagementClient(creds);
+                    var parameters = CreateStorageAccountParameters(devParameters);
+                    var mResponse = client.StorageAccounts.Create(parameters);
+                    do
                     {
-                        var azureconnectioninfo = client.StorageAccounts.Get(devOptions.StorageAccountName);
-                        var keysForStorageUnit = client.StorageAccounts.GetKeys(devOptions.StorageAccountName);
+                        var verificationResponse = client.StorageAccounts.Get(parameters.Name);
 
-                        var connectionInfo = new ConnectionInfo
+                        if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Created))
                         {
-                            PrimaryKey = keysForStorageUnit.PrimaryKey,
-                            SecondaryKey = keysForStorageUnit.SecondaryKey,
-                            StorageAccountName = azureconnectioninfo.StorageAccount.Name,
-                            Uri = keysForStorageUnit.Uri.ToString()
-                        };
-                        provisionResult.ConnectionData = connectionInfo.ToString();
-                        provisionResult.IsSuccess = true;
-                        break;
-                    }
-                    Thread.Sleep(TimeSpan.FromSeconds(10d));
+                            var azureconnectioninfo = client.StorageAccounts.Get(devParameters.StorageAccountName);
+                            var keysForStorageUnit = client.StorageAccounts.GetKeys(devParameters.StorageAccountName);
+
+                            var connectionInfo = new ConnectionInfo
+                            {
+                                PrimaryKey = keysForStorageUnit.PrimaryKey,
+                                SecondaryKey = keysForStorageUnit.SecondaryKey,
+                                StorageAccountName = azureconnectioninfo.StorageAccount.Name,
+                                Uri = keysForStorageUnit.Uri.ToString()
+                            };
+                            provisionResult.ConnectionData = connectionInfo.ToString();
+                            provisionResult.IsSuccess = true;
+                            break;
+                        }
+                        Thread.Sleep(TimeSpan.FromSeconds(10d));
+                    } while (true);
                 }
-                while (true);
             }
             catch (Exception e)
             {
@@ -137,7 +124,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var testProgress = "";
             var manifestProperties = manifest.Properties;
 
-            if (manifestProperties != null && manifestProperties.Any())
+            if (manifestProperties != null)
             {
                 var devOptions = DeveloperParameters.Parse(developerParams, manifest.GetProperties());
                 try
@@ -145,11 +132,9 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                     testProgress += "Establishing connection to Azure...\n";
                     // set up the credentials for azure
 
-                    var client = EstablishClient(manifest, devOptions, ref testProgress);
+                    var client = new StorageManagementClient();
 
                     var listOfStorageAccounts = client.StorageAccounts.List();
-
-                    testProgress += string.Format("Number of Accounts: '{0}'", listOfStorageAccounts.Count());
 
                     testProgress += "Successfully passed all testing criteria!";
                     testResult.IsSuccess = true;
@@ -169,21 +154,6 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             }
 
             return testResult;
-        }
-
-        private static StorageManagementClient EstablishClient(AddonManifest manifest, DeveloperParameters devOptions, ref string testProgress)
-        {
-            testProgress += "Parsing manifest...\n";
-            var manifestprops = manifest.GetProperties().ToDictionary(x => x.Key, x => x.Value);
-            testProgress += "Getting credentials...\n";
-            // set up the credentials for azure
-            testProgress += "Sub ID is: " + manifestprops["AzureManagementSubscriptionID"] + "\n";
-            testProgress += "Auth key is: " + manifestprops["AzureAuthenticationKey"] + "\n";
-            var creds = Azure.CertificateAuthenticationHelper.GetCredentials(manifestprops["AzureManagementSubscriptionID"], manifestprops["AzureAuthenticationKey"]);
-            // set up the storage management client
-            var client = new StorageManagementClient(creds);
-            testProgress += "Successfully returned credentials.\n";
-            return client;
         }
     }
 }
