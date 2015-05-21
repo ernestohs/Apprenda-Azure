@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 using NUnit.Framework;
+using static Apprenda.SaaSGrid.Addons.Azure.Storage.DeveloperParameters;
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
@@ -95,6 +96,25 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             
         }
 
+        [Test]
+        public void ParseDeveloperParametersTest()
+        {
+            // covers the provision method
+            var provisionDevParameters = Parse(ProvisionRequest.DeveloperParameters,
+                ProvisionRequest.Manifest.GetProperties());
+            Assert.IsNotNull(provisionDevParameters);
+            Assert.That(provisionDevParameters, Is.TypeOf(typeof(DeveloperParameters)));
+            // coverts the deprovision method
+            var deprovisionDevParameters = Parse(DeprovisionRequest.DeveloperParameters,
+                ProvisionRequest.Manifest.GetProperties());
+            Assert.IsNotNull(deprovisionDevParameters);
+            Assert.That(deprovisionDevParameters, Is.TypeOf(typeof(DeveloperParameters)));
+            // covers the test method
+            var testDevParameters = Parse(TestRequest.DeveloperParameters,
+                ProvisionRequest.Manifest.GetProperties());
+            Assert.IsNotNull(testDevParameters);
+            Assert.That(testDevParameters, Is.TypeOf(typeof(DeveloperParameters)));
+        }
 
         [Test]
         public void ProvisionTest()
@@ -103,6 +123,15 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             Assert.That(output, Is.TypeOf<ProvisionAddOnResult>());
             Assert.That(output.IsSuccess, Is.EqualTo(true));
             Assert.That(output.ConnectionData.Length, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void FailedProvisionTest()
+        {
+            var output = new AzureStorageAddon().Provision(ProvisionRequest);
+            Assert.That(output, Is.TypeOf<ProvisionAddOnResult>());
+            Assert.That(output.IsSuccess, Is.EqualTo(false));
+            Assert.That(output.EndUserMessage, Is.EqualTo("\nWe're in an error\n"));
         }
 
         [Test]

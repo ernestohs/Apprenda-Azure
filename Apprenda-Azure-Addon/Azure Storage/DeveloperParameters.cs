@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
-    class DeveloperParameters
+    public class DeveloperParameters
     {
         private string DeveloperAlias { get; set; }
         internal string AffinityGroup { get; private set; }
         internal string Description { get; private set; }
         internal bool GeoReplicationEnabled { get; private set; }
         internal String StorageAccountName { get; set; }
-        internal String AzureManagementSubscriptionId { get; private set; }
-        internal String AzureAuthenticationKey { get; private set; }
-        private String AzureUrl { get; set; }
-        internal String Location { get; private set; }
-        private String DeveloperId { get; set; }
+        internal string AzureManagementSubscriptionId { get; private set; }
+        internal string AzureAuthenticationKey { get; private set; }
+        private string AzureUrl { get; set; }
+        internal string Location { get; private set; }
+        private string DeveloperId { get; set; }
         internal bool NewStorageAccountFlag { get; private set; }
-        internal String ContainerName { get; private set; }
+        internal string ContainerName { get; private set; }
 
         public static DeveloperParameters Parse(IEnumerable<AddonParameter> parameters, IEnumerable<IAddOnPropertyDefinition> manifestProperties)
         {
@@ -26,14 +26,14 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             {
                 foreach (var param in parameters)
                 {
-                    options = MapToOption(options, param.Key, param.Value);
+                    options = MapToOption(options, param.Key.ToLowerInvariant(), param.Value);
                 }
             }
             if (manifestProperties != null)
             {
                 foreach (var prop in manifestProperties)
                 {
-                    options = MapToOption(options, prop.Key, prop.Value);
+                    options = MapToOption(options, prop.Key.ToLowerInvariant(), prop.Value);
                 }
             }
             return options;

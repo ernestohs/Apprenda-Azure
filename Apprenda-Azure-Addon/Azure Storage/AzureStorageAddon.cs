@@ -11,7 +11,6 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         public override ProvisionAddOnResult Provision(AddonProvisionRequest request)
         {
             var provisionResult = new ProvisionAddOnResult("");
-            var manifest = request.Manifest;
             try
             {
                 var devParameters = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
@@ -23,7 +22,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 {
                     var client = new StorageManagementClient(creds);
                     var parameters = CreateStorageAccountParameters(devParameters);
-                    var mResponse = client.StorageAccounts.Create(parameters);
+                    client.StorageAccounts.Create(parameters);
                     do
                     {
                         var verificationResponse = client.StorageAccounts.Get(parameters.Name);
@@ -62,7 +61,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var parameters = new StorageAccountCreateParameters
             {
                 Description = developerOptions.Description,
-                //GeoReplicationEnabled = developerOptions.GeoReplicationEnabled,
+                Location = developerOptions.Location,
                 Label = developerOptions.StorageAccountName,
                 Name = developerOptions.StorageAccountName
             };
@@ -98,7 +97,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
 
             // then if requested, delete the storage account name
-            var mResponse = client.StorageAccounts.Delete(devOptions.StorageAccountName);
+            client.StorageAccounts.Delete(devOptions.StorageAccountName);
 
             do
             {
@@ -107,7 +106,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Deleting))
                 {
                     deprovisionResult.IsSuccess = true;
-                    deprovisionResult.EndUserMessage = string.Format("Deprovision Request Complete, please allow a few minutes for resources to be fully deleted.");
+                    deprovisionResult.EndUserMessage = "Deprovision Request Complete, please allow a few minutes for resources to be fully deleted.";
                     break;
                 }
                 Thread.Sleep(TimeSpan.FromSeconds(10d));
@@ -127,12 +126,14 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             if (manifestProperties != null)
             {
                 var devOptions = DeveloperParameters.Parse(developerParams, manifest.GetProperties());
+                var creds = CertificateAuthenticationHelper.GetCredentials(devOptions.AzureManagementSubscriptionId,
+                    devOptions.AzureAuthenticationKey);
                 try
                 {
                     testProgress += "Establishing connection to Azure...\n";
                     // set up the credentials for azure
 
-                    var client = new StorageManagementClient();
+                    var client = new StorageManagementClient(creds);
 
                     var listOfStorageAccounts = client.StorageAccounts.List();
 
