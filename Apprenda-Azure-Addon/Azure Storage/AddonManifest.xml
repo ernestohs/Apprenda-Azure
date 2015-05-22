@@ -24,6 +24,6 @@
   <parameters allowUserDefinedParameters="true">
     <parameter key="NewStorageAccount" displayName="Create New Storage Account" description="Use this if you require isolation for your data at the storage account level" />
 	  <parameter key="StorageAccountName" displayName="Azure Storage Account Name" description="If you are creating a new storage account, specify it here. Otherwise, reference the storage account you are using."/>
-    <parameter key="ContainerName" displayName="Azure Storage Blob Container Name" description="Specify the name of the blog storage account." />
+    <parameter key="ContainerName" displayName="Azure Storage Blob Container Name" description="Specify the name of the blob storage account." />
   </parameters>
 </addonManifest>
