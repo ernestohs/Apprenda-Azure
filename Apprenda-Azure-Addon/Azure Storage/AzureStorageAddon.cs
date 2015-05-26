@@ -3,8 +3,6 @@ using System.Linq;
 using System.Threading;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
-using OperationStatusResponse = Microsoft.Azure.OperationStatusResponse;
-using SubscriptionCloudCredentials = Microsoft.Azure.SubscriptionCloudCredentials;
 
 namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 {
@@ -18,9 +16,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             {
                 var devOptions = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
                 // establish MSFT Azure Storage client
-                var filler = "";
 
-                var client = EstablishClient(manifest, devOptions, ref filler);
+                var client = EstablishClient(manifest, devOptions);
 
                 var uniqueIdIfNeeded = 0;
                 if (devOptions.StorageAccountName == null)
@@ -34,8 +31,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                     devOptions.StorageAccountName = string.Concat(devOptions.StorageAccountName, uniqueIdIfNeeded++);
                     nameIsAvailable = client.StorageAccounts.CheckNameAvailability(devOptions.StorageAccountName);
                 }
-                StorageAccountCreateParameters parameters = CreateStorageAccountParameters(devOptions);
-                OperationStatusResponse mResponse = client.StorageAccounts.Create(parameters);
+                var parameters = CreateStorageAccountParameters(devOptions);
+                var mResponse = client.StorageAccounts.Create(parameters);
 
                 do
                 {
@@ -100,7 +97,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             var deprovisionResult = new ProvisionAddOnResult(connectionData);
             var devOptions = DeveloperParameters.Parse(request.DeveloperParameters, request.Manifest.GetProperties());
             // set up the credentials for azure
-            SubscriptionCloudCredentials creds = CertificateAuthenticationHelper.GetCredentials(devOptions.AzureManagementSubscriptionId, devOptions.AzureAuthenticationKey);
+            var creds = CertificateAuthenticationHelper.GetCredentials(devOptions.AzureManagementSubscriptionId, devOptions.AzureAuthenticationKey);
             // set up the storage management client
             var client = new StorageManagementClient(creds);
 
@@ -145,7 +142,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                     testProgress += "Establishing connection to Azure...\n";
                     // set up the credentials for azure
 
-                    var client = EstablishClient(manifest, devOptions, ref testProgress);
+                    var client = EstablishClient(manifest, devOptions);
 
                     var listOfStorageAccounts = client.StorageAccounts.List();
 
@@ -171,9 +168,9 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             return testResult;
         }
 
-        private static StorageManagementClient EstablishClient(AddonManifest manifest, DeveloperParameters devOptions, ref string testProgress)
+        private static StorageManagementClient EstablishClient(AddonManifest manifest, DeveloperParameters devOptions)
         {
-            testProgress += "Parsing manifest...\n";
+            var testProgress = "Parsing manifest...\n";
             var manifestprops = manifest.GetProperties().ToDictionary(x => x.Key, x => x.Value);
             testProgress += "Getting credentials...\n";
             // set up the credentials for azure

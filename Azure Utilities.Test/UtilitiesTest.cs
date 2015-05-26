@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using Apprenda.SaaSGrid.Addons.Azure;
 using NUnit.Framework;
 

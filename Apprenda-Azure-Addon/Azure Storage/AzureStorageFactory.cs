@@ -37,7 +37,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 result.EndUserMessage += "Successfully accessed Blob Client\n";
             }
              catch (Exception e)
-            {
+             {
                 result.EndUserMessage += e.Message;
                 result.IsSuccess = false;
                 return result;
