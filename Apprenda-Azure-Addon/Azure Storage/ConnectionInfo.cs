@@ -13,6 +13,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         public string BlobContainerName { get; set; }
         public string QueueName { get; set; }
         public string TableName { get; set; }
+        public string ErrorMessage { get; set; }
 
         public ConnectionInfo Parse(string json)
         {

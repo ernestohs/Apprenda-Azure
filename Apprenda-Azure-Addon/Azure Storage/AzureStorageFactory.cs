@@ -9,64 +9,47 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
     class AzureStorageFactory
     {
         // AI-121
-        internal static OperationResult CreateBlobContainer(DeveloperParameters developerParameters)
+        internal static ConnectionInfo CreateBlobContainer(CloudStorageAccount account, String containerName)
         {
-            OperationResult result = new OperationResult();
-            CloudStorageAccount account;
             CloudBlobClient client;
             CloudBlobContainer container;
             bool containerCreated;
-            result.EndUserMessage += "Attempting to access Storage account\n";
+            ConnectionInfo info = new ConnectionInfo();
 
-            try
-            {
-                account = CloudStorageAccount.Parse(""/*need a connection string here*/); //get the account
-                result.EndUserMessage += "Account accessed successfully\n";
-            }
-            catch (Exception e)
-            {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
-            }
 
-            result.EndUserMessage += "Accessing Blob Client\n";
             try
             {
                 client = account.CreateCloudBlobClient(); //make a blob service client
-                result.EndUserMessage += "Successfully accessed Blob Client\n";
             }
              catch (Exception e)
              {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
+                 info.ErrorMessage = "Error when attempting to create blob client:\n" + e.Message;
+                 return info;
             }
             
-            result.EndUserMessage += "Creating blob container\n";
             
             try
             {
-            container = client.GetContainerReference(developerParameters.ContainerName); //get a reference to a container with the given name
-            containerCreated = container.CreateIfNotExists(); //if the container doesn't exist, create it.  We store the boolean result of this so we can handle if it doesn't get created (in case it doesn't also throw an exception here)
+                container = client.GetContainerReference(containerName); //get a reference to a container with the given name
+                containerCreated = container.CreateIfNotExists(); //if the container doesn't exist, create it.  We store the boolean result of this so we can handle if it doesn't get created (in case it doesn't also throw an exception here)
             }
             catch (Exception e)
             {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
+                info.ErrorMessage = "Error when attempting to create blob container:\n" + e.Message;
+                return info;
+
             }
-            
-            if(!containerCreated){ //check if the container got created. If not:
-                result.EndUserMessage += "Container was not created.  A container with this name may already exist\n";
-                result.IsSuccess = false;
-                return result;
+
+            if (!containerCreated) //check if the container got created. If not:
+            { 
+                info.ErrorMessage = "Blob container was not successfully created\n";
+                return info;
             }
 
             //if we passed all these steps, it should have successfully created a container
-            result.EndUserMessage += "Blob created successfully\n";
-            result.IsSuccess = true;
-            return result;
+            info.BlobContainerName = containerName;
+            info.ErrorMessage = null; //just to ensure the error message is null
+            return info;
 
         }
 

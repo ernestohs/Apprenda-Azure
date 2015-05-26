@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
@@ -19,44 +20,73 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
                 var client = EstablishClient(manifest, devOptions);
 
-                var uniqueIdIfNeeded = 0;
+                
                 if (devOptions.StorageAccountName == null)
                 {
                     throw new ArgumentNullException(devOptions.StorageAccountName);
                 }
+
+
                 var nameIsAvailable = client.StorageAccounts.CheckNameAvailability(devOptions.StorageAccountName);
-                // as might be the case, this will increment and append a numeral onto the end of the storage account name in order to uniquely qualify it.
-                while (!nameIsAvailable.IsAvailable)
-                {
-                    devOptions.StorageAccountName = string.Concat(devOptions.StorageAccountName, uniqueIdIfNeeded++);
-                    nameIsAvailable = client.StorageAccounts.CheckNameAvailability(devOptions.StorageAccountName);
-                }
-                var parameters = CreateStorageAccountParameters(devOptions);
-                var mResponse = client.StorageAccounts.Create(parameters);
+                if (nameIsAvailable.IsAvailable && devOptions.NewStorageAccountFlag)//if the name is available, this means that the StorageAccountName should be created because it is unique
+                { 
+                    var parameters = CreateStorageAccountParameters(devOptions);
+                    var mResponse = client.StorageAccounts.Create(parameters);
 
-                do
-                {
-                    var verificationResponse = client.StorageAccounts.Get(parameters.Name);
-
-                    if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Created))
+                    do
                     {
-                        var azureconnectioninfo = client.StorageAccounts.Get(devOptions.StorageAccountName);
-                        var keysForStorageUnit = client.StorageAccounts.GetKeys(devOptions.StorageAccountName);
+                        var verificationResponse = client.StorageAccounts.Get(parameters.Name);
 
-                        var connectionInfo = new ConnectionInfo
+                        if (verificationResponse.StorageAccount.Properties.Status.Equals(StorageAccountStatus.Created))
                         {
-                            PrimaryKey = keysForStorageUnit.PrimaryKey,
-                            SecondaryKey = keysForStorageUnit.SecondaryKey,
-                            StorageAccountName = azureconnectioninfo.StorageAccount.Name,
-                            Uri = keysForStorageUnit.Uri.ToString()
-                        };
-                        provisionResult.ConnectionData = connectionInfo.ToString();
-                        provisionResult.IsSuccess = true;
-                        break;
+                            var azureconnectioninfo = client.StorageAccounts.Get(devOptions.StorageAccountName);
+                            var keysForStorageUnit = client.StorageAccounts.GetKeys(devOptions.StorageAccountName);
+
+                            var connectionInfo = new ConnectionInfo
+                            {
+                                PrimaryKey = keysForStorageUnit.PrimaryKey,
+                                SecondaryKey = keysForStorageUnit.SecondaryKey,
+                                StorageAccountName = azureconnectioninfo.StorageAccount.Name,
+                                Uri = keysForStorageUnit.Uri.ToString()
+                            };
+                            provisionResult.ConnectionData = connectionInfo.ToString();
+                            provisionResult.IsSuccess = true;
+                            break;
+                        }
+                        Thread.Sleep(TimeSpan.FromSeconds(10d));
                     }
-                    Thread.Sleep(TimeSpan.FromSeconds(10d));
+                    while (true);
                 }
-                while (true);
+
+                else if (!nameIsAvailable.IsAvailable && devOptions.NewStorageAccountFlag) //this should be invalid; the user wants us to create a new storage account even though the name they gave us is not unique
+                {
+                    provisionResult.EndUserMessage += "Invalid Configuration. The StorageAccountName given is not available\n"
+                                                   + "an account with this name may already exist.  Try again with a different StorageAccountName\n";
+                    provisionResult.IsSuccess = false;
+                }
+
+                else if (!nameIsAvailable.IsAvailable && !devOptions.NewStorageAccountFlag) //this means that there is already an account with this name, and the user doesn't want to create a new Storage Account.  They may want to create a blob
+                {
+                    if (String.IsNullOrEmpty(devOptions.ContainerName)) //if the container name is null or empty, this is an invalid option, because there is nothing for us to do
+                    {
+                        provisionResult.EndUserMessage += "Invalid Configuration. It seems you have tried to create a blob,\n"
+                                                   + "but you have not specified a container name. Please specify a container name, or check your configuration and try again\n";
+                        provisionResult.IsSuccess = false;
+                    }
+
+                    else //now we create the blob
+                    {
+                        CloudStorageAccount account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https" +
+                                                                                ";AccountName=" + devOptions.StorageAccountName +
+                                                                                ";AccountKey=" + devOptions.AzureAuthenticationKey + ";");
+
+                        ConnectionInfo info = AzureStorageFactory.CreateBlobContainer(account, devOptions.ContainerName);
+                    }
+
+
+                }
+           
+                
             }
             catch (Exception e)
             {
