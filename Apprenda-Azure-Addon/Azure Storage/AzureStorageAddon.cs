@@ -58,10 +58,17 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                     while (true);
                 }
 
+                else if(nameIsAvailable.IsAvailable && !devOptions.NewStorageAccountFlag)  //it appears that the user would like to create a blob, but has input a StorageAccount that already exists
+                {
+                    provisionResult.EndUserMessage += "Invalid Configuration. The StorageAccountName given does not exist,\n"
+                                                   + "so a blob container cannot be created.  Try again with the name of an existing Storage Container (if you wish to create a blob)\n";
+                    provisionResult.IsSuccess = false;
+                }
+
                 else if (!nameIsAvailable.IsAvailable && devOptions.NewStorageAccountFlag) //this should be invalid; the user wants us to create a new storage account even though the name they gave us is not unique
                 {
-                    provisionResult.EndUserMessage += "Invalid Configuration. The StorageAccountName given is not available\n"
-                                                   + "an account with this name may already exist.  Try again with a different StorageAccountName\n";
+                    provisionResult.EndUserMessage += "Invalid Configuration. The StorageAccountName given is not available.\n"
+                                                   + "An account with this name may already exist.  Try again with a different StorageAccountName\n";
                     provisionResult.IsSuccess = false;
                 }
 
@@ -81,6 +88,17 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                                                                                 ";AccountKey=" + devOptions.AzureAuthenticationKey + ";");
 
                         ConnectionInfo info = AzureStorageFactory.CreateBlobContainer(account, devOptions.ContainerName);
+                        if (String.IsNullOrEmpty(info.ErrorMessage)) //this means there is no error
+                        {
+                            provisionResult.IsSuccess = true;
+                            provisionResult.ConnectionData = info.ToString();
+                            provisionResult.EndUserMessage = "Successfully created blob container\n";
+                        }
+                        else //this means there is an error, so it failed
+                        {
+                            provisionResult.IsSuccess = false;
+                            provisionResult.EndUserMessage = "Could not create blob container:\n" + info.ErrorMessage;
+                        }
                     }
 
 
