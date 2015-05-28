@@ -83,9 +83,11 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
                     else //now we create the blob
                     {
+                        String primaryKey = client.StorageAccounts.GetKeys(devOptions.StorageAccountName).PrimaryKey;
                         CloudStorageAccount account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https" +
                                                                                 ";AccountName=" + devOptions.StorageAccountName +
-                                                                                ";AccountKey=" + devOptions.AzureAuthenticationKey + ";");
+                                                                                ";AccountKey=" + primaryKey
+                                                                                + ";");  //we create the connection string here, which should allow us to connect to the storage account
 
                         ConnectionInfo info = AzureStorageFactory.CreateBlobContainer(account, devOptions.ContainerName);
                         if (String.IsNullOrEmpty(info.ErrorMessage)) //this means there is no error
@@ -122,7 +124,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 Description = developerOptions.Description,
                 //GeoReplicationEnabled = developerOptions.GeoReplicationEnabled,
                 Label = developerOptions.StorageAccountName,
-                Name = developerOptions.StorageAccountName
+                Name = developerOptions.StorageAccountName,
+                AccountType = "Standard_LRS"     //hardcoded for now, possibly add a dev option/parameter to change this
             };
             if (developerOptions.AffinityGroup != null)
             {
@@ -194,7 +197,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
                     var listOfStorageAccounts = client.StorageAccounts.List();
 
-                    testProgress += string.Format("Number of Accounts: '{0}'", listOfStorageAccounts.Count());
+                    testProgress += string.Format("Number of Accounts: '{0}'\n", listOfStorageAccounts.Count());
 
                     testProgress += "Successfully passed all testing criteria!";
                     testResult.IsSuccess = true;
@@ -224,7 +227,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             // set up the credentials for azure
             testProgress += "Sub ID is: " + manifestprops["AzureManagementSubscriptionID"] + "\n";
             testProgress += "Auth key is: " + manifestprops["AzureAuthenticationKey"] + "\n";
-            var creds = Azure.CertificateAuthenticationHelper.GetCredentials(manifestprops["AzureManagementSubscriptionID"], manifestprops["AzureAuthenticationKey"]);
+            var creds = Azure.CertificateAuthenticationHelper.GetCredentials(manifestprops["AzureManagementSubscriptionID"], /*manifestprops["AzureAuthenticationKey"]*/"MIIJ/AIBAzCCCbwGCSqGSIb3DQEHAaCCCa0EggmpMIIJpTCCBe4GCSqGSIb3DQEHAaCCBd8EggXbMIIF1zCCBdMGCyqGSIb3DQEMCgECoIIE7jCCBOowHAYKKoZIhvcNAQwBAzAOBAjOUBUvySMk4gICB9AEggTImV90P/WI1QzjG0R0k2t9cO2NN6S924J0mbk+Oelvp6vdmD3Afg2JRH94DBpTXmuDoawT1P237bGusgf0de3VVBZUGuFgTmxs8VkTbUIKFnR5UT0B1G4Rf/gHE0dy0EJ2TkbBUz742Dj0Qg9tiVYcs5MHsyIxTbGpqJqAqzn/HOnVqnv5PB6F4+ermV/JSJTP1ST+nBy0pgmHI0Oc6dqs65o/gP7l5KKcT3x1VswJs7engPHcrupK03Uxd2NpHGXFEO3/cUnEslM4ktJfLA425ydBK8xgf/XqsiM72fQHyxr1agwQzsEeAjC9gphzWih22NGNxBzsZInB2HPM9OWhAr5GRl09qNhjBUbTAmuKwJ7k1OAvnL4iZ2QN5Wp5TFQAg5CEqK6YAJHftIzL0v/WZGbdGB82UCCekss6j09M2/s8UVntFSjZe/8HDkomMO2+lT2EmFNEd1Hw5wJINmDMRpgvELsgon4jgST6NEke0yqMAkexS+RCc2Rm5X36RPvCTPAsVA16g5Xz9smvt6Rkc5gMs2Blhg2JFeT3i48c9W7Ug2W4h4MwfxIlLuh94lYkYO8hsIj8dmFmyVqzUwYGqUfNwQHdRXoL4Zft9uKEfgpA+/gCFd1RTiaLIlyy7aHHphAJ0Qq1CaALDEv43tniCzg98yqdGzNBaADwIVWL+4bKB2Vv+i1t0xxP/lLaWMeqlnLWdnUHFGjGPRcMwofYLcQllPW3jZKOYrFiKXPU4INXrYQoy5jwNYEdN6wWP7uj5uNNBSBKKaxHXvocHtWYYuZ160wulmREtZFCy1eebePLLz/Nr7NZMAe/lhXWxaliOxB5jWs2SEjMyfHLsAoUV04hjLYMcUdCLgXDGNgYAHKsjyDCp+H5IBiWlu0S7WDkZAN4NASL9nTF8EbuqCcii6xL3iBBVvSvhGVLpwJN6FzAbA3cMVcIyDFVVUx7zpkW3UZXg48QUY5691v6SRq1+ga9qYFD0NtV2TXkwDRzs9mH2DBrxZO4gQTcpiLYC5zCbholY1H/LKgf0yl8naOWNB+8YVOT7J0jWgj7fBx6wTbvCzFFLoJZCkGBLomi7sXjjj9WOxR2Tlwv+WFu4UnI9UU9Ox+9sKL96Y9GQqFRI+61mNzWnkftO3p0Y0LF3sIJRqQOioFRitTgPpsw+qKCRoEK9wRsOzTHPE9Qes66WrCewUdByq4ZlD4JtiynO9534tp3V5xrTgeWsieK0zuZAt2Z9PPBRMMyCqYcF7Hw2c7tonhpqsg2EBeqHiw64cLIYwMd2fcRLIgqHP4E40wL35L+77u/ioauiSpReJTcAwA9YTDSwE5T637RZJjJ9AwU7tjLUoJsJm+HKFhpMuiGakNbS/LbK/F/5EQXZ9aS28lWb2end5d04cFt7powN2VFYjj/yEAY/9bRlr1k3ORRMoGQ6doi72V4osrkLZAqumtT2N3+cJH7pWYH2IsipRKnRJWFYasvox9czdoeVrpCPyOQopUh6EwH9gIJICNkgJjwa+nV66gHugnmbKlXcQVd/e3omqL1OPzIFfZVQMhw0oB1CmXNWU3H2Ns4ISoKzBrPblWS0Ibco4kvC48SzuQcOVw1cZtYLA3Em4a3Fh1N5cxqrE2PDw12MYHRMBMGCSqGSIb3DQEJFTEGBAQBAAAAMFsGCSqGSIb3DQEJFDFOHkwAewAxAEEAMAA4ADgAMAA1AEEALQBFAEUAOAA0AC0ANAAxAEUAMQAtADkAQQBDAEIALQA4AEQANAA2ADAANQAxAEQAQgAyADMAOQB9MF0GCSsGAQQBgjcRATFQHk4ATQBpAGMAcgBvAHMAbwBmAHQAIABTAG8AZgB0AHcAYQByAGUAIABLAGUAeQAgAFMAdABvAHIAYQBnAGUAIABQAHIAbwB2AGkAZABlAHIwggOvBgkqhkiG9w0BBwagggOgMIIDnAIBADCCA5UGCSqGSIb3DQEHATAcBgoqhkiG9w0BDAEGMA4ECN7Jbo/KzLF6AgIH0ICCA2gQBxaGFYVxNJ5TLyT9I2a2B4jSKSjfM4oWSzOGO6W3wXf6oWisbRnPoT/w6sP64KTDJbHttDs4Rq6mup9qU8sAtpRtK0QZk8kvvHSqzUPpcibqytvGKM0xL3UKncuCz96PTSfrJcoX0KVYjPjZ81MPfEaccKbtXn2jXCUqRknwOkQI1XTj9xdMsLnaWyu6FEe32i5FJiGJsOu5fawTEzXn6gWKx2avttpI76oqvOszY14ac9JHgRDr1tfESoYKxr4q2Wconwg5RcjAO/2JJqhHDofwzwp/BLqsiDeNxEOhdYNaBnw8/u3bQTT/i0py5bRrEbn62l8V/o/96Ak9d+s8EX+X7RhRFaQegbXtTceMQdmVydKa44iRjwLw1g9bEKXmCGmA+pSSs7umAvAXW3bjxCbEl8wmmjiO6etoyZUgfb59r4biMh2naQkBwOhqwUagiHgFW+T+L2cI4/1TApprMeeCaGqTqNdkPYnqgtv37P4Hqw4xYKS6dvxYY96Tn5KThedvrBYjcxM65U9lIhNNqXHzRCrAgIFm7ntVLK/WeYDMbySwGnuGWnyH9UbhmC3K3Utlze/PQdVSBnI0lPD5J4BdfWgN1YkPBVImZWvRo2Cx8y6iuU34YXoXS5UAmKVIQ0v6xpUXIikl9RKn4vONVw4fxKU1BbSXj5sm33ZyX90Qy8vTbMcUc6wZTben8DuTLgiyqk+RRlSXuAiEutkO3rOB7/LT+ueLM0gW4FZPaoLqJOnVVjENA7TsCZa/EdeBgAqh61SdctOL2upA7H+Opk+TYj030u0YdMUO4BzhZI3IFHWJyjrthHCo5/UClR4ViHFk4WCOXPQjVtb7SMgQ0k0TTFr9nRcvhB0b1+YPGpMYM7pL4djlrZ2ociLewq1d6m4wCVxEUXUuCG5lxp2D9AEheUlZdBcvNRDSBW7uMGyKtZ7k3gWTdAtMM98eN2zTcIs/Pz5twZXWhIAgQtR9lzPcK2SAqBtz2dSnjOc641nVGvZBqlDoXb++tsgW5ZasHvLaho58k93RwmENnyebN43UvCQNMJXVJJT0Rf7sU/CHWQ+jdq06Hs50nqMqb0d1lF+/NSmz/9sttBu0aF4JKIM4OU+kltIZCx80Spx2A9L5uK41i32krJWVjD5REKoCUZWCuZ2RJjA3MB8wBwYFKw4DAhoEFJ13A9IJYyfCGzIwBVro56secXlGBBTU+rngG1rnR/XKpOG2TKV2oeJ7jg==");
             // set up the storage management client
             var client = new StorageManagementClient(creds);
             testProgress += "Successfully returned credentials.\n";

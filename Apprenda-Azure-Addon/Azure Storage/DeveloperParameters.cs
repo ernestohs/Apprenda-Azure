@@ -18,6 +18,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         private String DeveloperId { get; set; }
         internal bool NewStorageAccountFlag { get; private set; }
         internal String ContainerName { get; private set; }
+        internal String InstanceAlias { get; private set; }
 
         public static DeveloperParameters Parse(IEnumerable<AddonParameter> parameters, IEnumerable<IAddOnPropertyDefinition> manifestProperties)
         {
@@ -104,6 +105,11 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
             if ("developeralias".Equals(key))
             {
                 options.DeveloperAlias = value;
+                return options;
+            }
+            if ("instancealias".Equals(key))
+            {
+                options.InstanceAlias = value;
                 return options;
             }
             throw new ArgumentException(string.Format("The option provided '{0}' does not parse, please try your request again.", key));

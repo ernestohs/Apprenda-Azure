@@ -53,126 +53,92 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
 
         }
 
-        internal static OperationResult DeleteBlobContainer(DeveloperParameters developerParameters) //pretty much the same as CreateBlobContainer
+        internal static ConnectionInfo DeleteBlobContainer(CloudStorageAccount account, String containerName) //pretty much the same as CreateBlobContainer
         {
-            OperationResult result = new OperationResult();
-            CloudStorageAccount account;
             CloudBlobClient client;
             CloudBlobContainer container;
             bool containerDeleted;
+            ConnectionInfo info = new ConnectionInfo();
 
-            result.EndUserMessage += "Attempting to access Storage account\n";
-            try
-            {
-                account = CloudStorageAccount.Parse(""/*need a connection string here*/); //get the account
-                result.EndUserMessage += "Account accessed successfully\n";
-            }
-            catch (Exception e)
-            {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
-            }
 
-            result.EndUserMessage += "Accessing Blob Client\n";
             try
             {
                 client = account.CreateCloudBlobClient(); //make a blob service client
-                result.EndUserMessage += "Successfully accessed Blob Client\n";
-            }
-             catch (Exception e)
-            {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
-            }
-            
-            result.EndUserMessage += "Deleting blob container\n";
-            
-            try
-            {
-            container = client.GetContainerReference(developerParameters.ContainerName); //get a reference to a container with the given name
-            containerDeleted = container.DeleteIfExists(); //if the container exists, delete it.  We store the boolean result of this so we can handle if it doesn't get deleted (in case it doesn't also throw an exception here)
             }
             catch (Exception e)
             {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
+                info.ErrorMessage = "Error when attempting to create blob client:\n" + e.Message;
+                return info;
             }
-            
-            if(!containerDeleted){ //check if the container got deleted. If not:
-                result.EndUserMessage += "Container was not deleted.  A container with this name may not currently exist\n";
-                result.IsSuccess = false;
-                return result;
+
+
+            try
+            {
+                container = client.GetContainerReference(containerName); //get a reference to a container with the given name
+                containerDeleted = container.DeleteIfExists(); //delete if it exists
+            }
+            catch (Exception e)
+            {
+                info.ErrorMessage = "Error when attempting to delete blob container:\n" + e.Message;
+                return info;
+
+            }
+
+            if (!containerDeleted) //check if the container got deleted. If not:
+            {
+                info.ErrorMessage = "Blob container was not successfully deleted\n";
+                return info;
             }
 
             //if we passed all these steps, it should have successfully deleted the container
-            result.EndUserMessage += "Blob deleted successfully\n";
-            result.IsSuccess = true;
-            return result;
+            info.BlobContainerName = containerName;
+            info.ErrorMessage = null; //just to ensure the error message is null
+            return info;
 
         
         }
 
-        internal static OperationResult CreateQueue(DeveloperParameters developerParameters)
+        internal static ConnectionInfo CreateQueue(CloudStorageAccount account, String containerName) //gonna have to implement handling of which type of container the user wants to be created
         {
-            OperationResult result = new OperationResult();
-            CloudStorageAccount account;
             CloudQueueClient client;
             CloudQueue queue;
             bool queueCreated;
+            ConnectionInfo info = new ConnectionInfo();
 
-            try
-            {
-                account = CloudStorageAccount.Parse(""/*need a connection string here*/); //get the account
-                result.EndUserMessage += "Account accessed successfully\n";
-            }
-            catch (Exception e)
-            {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
-            }
 
-            result.EndUserMessage += "Accessing Queue Client\n";
             try
             {
                 client = account.CreateCloudQueueClient(); //make a queue client
-                result.EndUserMessage += "Successfully accessed Queue Client\n";
             }
             catch (Exception e)
             {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
+                info.ErrorMessage = "Error when attempting to create queue client:\n" + e.Message;
+                return info;
             }
 
-            result.EndUserMessage += "Creating queue\n";
 
             try
             {
-                queue = client.GetQueueReference(developerParameters.ContainerName); //get a reference to a queue with the given name
+                queue = client.GetQueueReference(containerName); //get a reference to a container with the given name
                 queueCreated = queue.CreateIfNotExists(); //if the queue doesn't exist, create it.  We store the boolean result of this so we can handle if it doesn't get created (in case it doesn't also throw an exception here)
             }
             catch (Exception e)
             {
-                result.EndUserMessage += e.Message;
-                result.IsSuccess = false;
-                return result;
+                info.ErrorMessage = "Error when attempting to create queue:\n" + e.Message;
+                return info;
+
             }
 
-            if (!queueCreated)
-            { //check if the queue got created. If not:
-                result.EndUserMessage += "Queue was not created.  A queue with this name may already exist\n";
-                result.IsSuccess = false;
-                return result;
+            if (!queueCreated) //check if the queue got created. If not:
+            {
+                info.ErrorMessage = "Queue was not successfully created\n";
+                return info;
             }
 
-            //if we passed all these steps, it should have successfully created a queue
-            result.EndUserMessage += "Queue created successfully\n";
-            result.IsSuccess = true;
-            return result;
+            //if we passed all these steps, it should have successfully created a container
+            info.BlobContainerName = containerName;
+            info.ErrorMessage = null; //just to ensure the error message is null
+            return info;
         }
 
         internal static OperationResult DeleteQueue(DeveloperParameters developerParameters)

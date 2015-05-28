@@ -160,7 +160,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.ServiceBus
                     
                     var listOfStorageAccounts = client.StorageAccounts.List();
 
-                    testProgress += $"Number of Accounts: '{listOfStorageAccounts.Count()}'";
+                    testProgress += "Number of Accounts: '{listOfStorageAccounts.Count()}'";
 
                     testProgress += "Successfully passed all testing criteria!";
                     testResult.IsSuccess = true;
