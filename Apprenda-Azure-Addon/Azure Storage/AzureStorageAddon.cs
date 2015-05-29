@@ -47,7 +47,8 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                                 PrimaryKey = keysForStorageUnit.PrimaryKey,
                                 SecondaryKey = keysForStorageUnit.SecondaryKey,
                                 StorageAccountName = azureconnectioninfo.StorageAccount.Name,
-                                Uri = keysForStorageUnit.Uri.ToString()
+                                Uri = keysForStorageUnit.Uri.ToString(),
+                                BlobContainerName = null  //even if they provide this, we want to save it as null so we can use this as criteria so delete the storage account when deprovisioning takes place
                             };
                             provisionResult.ConnectionData = connectionInfo.ToString();
                             provisionResult.IsSuccess = true;
