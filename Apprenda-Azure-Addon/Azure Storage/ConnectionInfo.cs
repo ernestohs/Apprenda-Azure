@@ -15,7 +15,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         public string TableName { get; set; }
         public string ErrorMessage { get; set; }
 
-        public ConnectionInfo Parse(string json)
+        public static ConnectionInfo Parse(string json)
         {
             return JsonConvert.DeserializeObject<ConnectionInfo>(json);
         }
