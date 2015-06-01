@@ -9,7 +9,7 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
         private string DeveloperAlias { get; set; }
         internal string AffinityGroup { get; private set; }
         internal string Description { get; private set; }
-        internal bool GeoReplicationEnabled { get; private set; }
+        internal String ReplicationType { get; private set; }
         internal String StorageAccountName { get; set; }
         internal String AzureManagementSubscriptionId { get; private set; }
         internal String AzureAuthenticationKey { get; private set; }
@@ -82,14 +82,13 @@ namespace Apprenda.SaaSGrid.Addons.Azure.Storage
                 options.AffinityGroup = value;
                 return options;
             }
-            if ("georeplicationenabled".Equals(key))
+            if ("replicationtype".Equals(key))
             {
-                bool result;
-                if (!bool.TryParse(value, out result))
+                if (!(value.Equals("Standard_LRS") || value.Equals("Standard_GRS") || value.Equals("Standard_ZRS") || value.Equals("Standard_RAGRS")))
                 {
-                    throw new ArgumentException("Tried to pass in a non-boolean value for this option. Please refactor manifest file.");
+                    throw new ArgumentException("Tried to pass in an incorrect value for this option. Please refactor manifest file.");
                 }
-                options.GeoReplicationEnabled = result;
+                options.ReplicationType = value;
                 return options;
             }
             if ("location".Equals(key))

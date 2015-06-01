@@ -18,7 +18,7 @@
     <property key="AzureManagementSubscriptionID" displayName="Azure Management Subscription ID" description="" value="" />
     <property key="AzureAuthenticationKey" displayName="Azure Management Auth Key" description="" value=""/>
     <property key="AzureURL" displayName="Your Azure URL" description="" value="https://management.core.windows.net"/>
-    <property key="GeoReplicationEnabled" displayName="Geo Replication Option" description="Set to false if you do not want your storage replicated globally. Default is true." value="true"/>
+    <property key="ReplicationType" displayName="Replication Option" description="Standard_LRS for locally redundant, Standard_GRS for geo-redundant, Standard_ZRS for zone, Standard_RAGRS for read access geo-redundant" value="Standard_LRS"/>
     <property key="Location" displayName="Azure Storage Location" description="The location of the storage account you are referencing/creating." value="East US"/>
   </properties>
   <parameters allowUserDefinedParameters="true">
